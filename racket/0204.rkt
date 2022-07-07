@@ -1,0 +1,41 @@
+#lang racket
+
+; https://leetcode.com/problems/count-primes/
+(define/contract (count-primes n)
+  (-> exact-integer? exact-integer?)
+  (if (< n 3)
+      0
+      (let ([count (arithmetic-shift n -1)]
+            [sieve (make-vector n #f)])
+        (do ([i 3 (+ i 2)])
+          ((>= (* i i) n))
+          (unless (vector-ref sieve i)
+            (do ([j (* i i) (+ j (arithmetic-shift i 1))])
+              ((>= j n))
+              (unless (vector-ref sieve j)
+                (vector-set! sieve j #t)
+                (set! count (sub1 count))))))
+        count)))
+
+(module+ test
+  (require rackunit)
+  (check-eq? (count-primes 0) 0)
+  (check-eq? (count-primes 1) 0)
+  (check-eq? (count-primes 2) 0)
+  (check-eq? (count-primes 3) 1)
+  (check-eq? (count-primes 4) 2)
+  (check-eq? (count-primes 5) 2)
+  (check-eq? (count-primes 6) 3)
+  (check-eq? (count-primes 7) 3)
+  (check-eq? (count-primes 8) 4)
+  (check-eq? (count-primes 9) 4)
+  (check-eq? (count-primes 10) 4)
+  (check-eq? (count-primes 11) 4)
+  (check-eq? (count-primes 12) 5)
+  (check-eq? (count-primes 13) 5)
+  (check-eq? (count-primes 14) 6)
+  (check-eq? (count-primes 15) 6)
+  (check-eq? (count-primes 10000) 1229)
+  (check-eq? (count-primes 499979) 41537)
+  (check-eq? (count-primes 999983) 78497)
+  (check-eq? (count-primes 1500000) 114155))

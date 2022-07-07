@@ -1,0 +1,12 @@
+{
+  "editor.formatOnSave": false,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 4,
+  "editor.defaultFormatter": "redhat.java",
+  "files.autoSave": "onFocusChange",
+  "java.format.comments.enabled": false,
+  "java.checkstyle.configuration": "/google_checks.xml",
+  "java.checkstyle.properties": {
+    "OuterTypeFilename": null,
+  },
+}

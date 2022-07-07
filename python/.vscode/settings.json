@@ -1,0 +1,23 @@
+{
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": false,
+  "editor.tabSize": 4,
+  "editor.useTabStops": false,
+  "editor.defaultFormatter": "ms-python.python"
+  "python.languageServer": "Pylance",
+  "python.formatting.provider": "yapf",
+  "python.formatting.blackArgs": [
+    "--line-length",
+    "119",
+    "--skip-string-normalization",
+  ],
+  "python.formatting.yapfArgs": [
+    "--style={column_limit=119}"
+  ],
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": [
+    "--max-line-length=119"
+  ],
+}
